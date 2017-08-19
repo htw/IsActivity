@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yBs-YQ-kHx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--活动-->
+        <!--List Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ListController" sceneMemberID="viewController">
@@ -133,7 +133,24 @@
                             <constraint firstAttribute="trailing" secondItem="0tQ-lC-4uR" secondAttribute="trailing" id="wD9-SN-dBz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="活动" id="1gx-sW-n06">
+                    <navigationItem key="navigationItem" id="1gx-sW-n06">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="Uxz-yp-1iB">
+                            <connections>
+                                <action selector="switchAction:" destination="BYZ-38-t0r" id="uKo-TJ-6Jz"/>
+                            </connections>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M1b-Ro-sGf">
+                            <rect key="frame" x="142" y="7" width="91" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <state key="normal" title="苏州">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <segue destination="n5b-2Y-EQY" kind="presentation" id="Rqf-79-G3L"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="PEw-Bi-hSC">
                             <color key="tintColor" red="0.1165288352" green="0.64997474430000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -150,18 +167,47 @@
             </objects>
             <point key="canvasLocation" x="829.60000000000002" y="122.78860569715144"/>
         </scene>
+        <!--选择城市-->
+        <scene sceneID="hpL-bF-nOZ">
+            <objects>
+                <tableViewController id="T2Y-1z-qpL" customClass="CityTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ANB-rT-mPJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="uVA-ej-Knr">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uVA-ej-Knr" id="uuD-3q-1ND">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T2Y-1z-qpL" id="rR2-ff-tMB"/>
+                            <outlet property="delegate" destination="T2Y-1z-qpL" id="xF1-e6-Eyd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="选择城市" id="BSf-6P-hq1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TIQ-zB-mUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2503.1999999999998" y="122.78860569715144"/>
+        </scene>
         <!--Detail-->
         <scene sceneID="odF-xt-oro">
             <objects>
                 <viewControllerPlaceholder storyboardName="Detail" id="fxI-Ga-uvK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ckF-qP-0VN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1288" y="122"/>
+            <point key="canvasLocation" x="829" y="539"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vlL-Ps-yDY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yBs-YQ-kHx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yBs-YQ-kHx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4nQ-q7-jCs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -175,6 +221,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Htq-Zl-bJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9ho-8L-BG8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n5b-2Y-EQY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mmZ-Bc-nY9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="T2Y-1z-qpL" kind="relationship" relationship="rootViewController" id="Egy-zP-vRY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lur-r4-lqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1564" y="122.78860569715144"/>
         </scene>
     </scenes>
     <resources>
