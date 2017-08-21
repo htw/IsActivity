@@ -12,12 +12,13 @@
 #import "UIImageView+WebCache.h"
 #import "DetailViewController.h"
 #import "IssueViewController.h"
-
-@interface ListController () <UITableViewDelegate,UITableViewDataSource>{
+#import <CoreLocation/CoreLocation.h>
+@interface ListController () <UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate> {
     NSInteger page;
     NSInteger perPage;
     NSInteger totalPage;
-    BOOL isLoading;
+    BOOL isLoading;//默认值是NO  未初始化
+    BOOL firstVisit;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *activityTableView;
@@ -25,6 +26,8 @@
 - (IBAction)favoAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (strong, nonatomic) UIImageView *zoomIV;
 @property (strong,nonatomic) UIActivityIndicatorView *aiv;
+@property(strong,nonatomic)CLLocationManager *locMgr;
+@property(strong,nonatomic)CLLocation *location;
 - (IBAction)searchAction:(UIBarButtonItem *)sender;
 - (IBAction)switchAction:(UIBarButtonItem *)sender;
 
@@ -45,6 +48,7 @@
     
     [self naviConfig];
     [self uiLayout];
+    [self locationConfig];
     [self dataInitialize];
     //过两秒执行
    // [self performSelector:@selector(networkRequest)withObject:nil afterDelay:2];
@@ -53,11 +57,13 @@
 //每次将要来到这个页面的时候
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self locationStart];
 }
 
 //每次到达这个页面的时候
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
 }
 
 //每次要离开这个页面的时候
@@ -84,7 +90,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+//专门处理定位的基本shezh9
+-(void)locationConfig{
+    _locMgr = [CLLocationManager new];
+    //签协议
+    _locMgr.delegate = self;
+    //设置定位到的设备位移多少距离进行一次识别
+    _locMgr.distanceFilter = kCLDistanceFilterNone;
+    //设置把地球设置分割成边长多少的精度的方块
+    _locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+}
+//这个方法处理开始定位
+-(void)locationStart{
+    //判断用户有没有选择过是否使用定位
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        //询问用户是否愿意使用定位
+#ifdef __IPHONE_8_0
+        //使用 “使用中打开定位” 去运用定位功能
+        [_locMgr requestAlwaysAuthorization];
+#endif
+    }
+    //打开定位服务的开关(开始定位)
+    [_locMgr startUpdatingLocation];
+    
+}
 //这个方法专门做导航条的控制
 - (void) naviConfig{
     //设置导航条标题文字
@@ -145,6 +174,7 @@
 
 //这个方法专门做数据的处理
 - (void)dataInitialize{
+    firstVisit = YES;
     isLoading = NO;
     //初始化数组
     _arr = [NSMutableArray new];
@@ -497,5 +527,62 @@
 }
 
 - (IBAction)cityAction:(UIButton *)sender forEvent:(UIEvent *)event {
+}
+//定位失败时
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error{
+    if (error) {
+        switch (error.code) {
+            case kCLErrorNetwork:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"NetworkError", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorDenied:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"GPSDisabled", nil) andTitle:nil onView:self];
+                break;
+            case kCLErrorLocationUnknown:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"LocationUnkonw", nil) andTitle:nil onView:self];
+                break;
+                       default:
+                [Utilities popUpAlertViewWithMsg:NSLocalizedString(@"SystemError", nil) andTitle:nil onView:self];
+                break;
+        }
+    }
+}
+//定位成功时
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation{
+    NSLog(@"纬度:%f",newLocation.coordinate.latitude);
+    NSLog(@"经度:%f",newLocation.coordinate.longitude);
+    _location = newLocation;
+    //判断flag思想判断是否可以去根据定位拿到城市
+    if (firstVisit) {
+        firstVisit = !firstVisit;
+        //根据定位拿到城市
+        [self getRegionCoordinate];
+    }
+    
+}
+-(void)getRegionCoordinate{
+    //duration表示从Now开始过3秒
+    dispatch_time_t duration = dispatch_time(DISPATCH_TIME_NOW, 3*NSEC_PER_SEC);
+    //用duration这个设置好的策略去执行下列方法
+    dispatch_after(duration, dispatch_get_main_queue(), ^{
+        //正式做事情
+        CLGeocoder *geo = [CLGeocoder new];
+        //反向地理编码
+        [geo reverseGeocodeLocation:_location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (!error) {
+                CLPlacemark *first = placemarks.firstObject;
+                NSDictionary *locDict = first.addressDictionary;
+                NSLog(@"locDict = %@",locDict);
+                NSString *city = locDict[@"City"];
+                city = [city substringToIndex:city.length - 1];
+                //NSLog(@"%@",city);
+            }
+        }];
+        //过三秒钟关掉开关
+        [_locMgr stopUpdatingLocation];
+    });
 }
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C4F841C0D4BC13222BC63FD /* libPods-ActivityList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2E9BF38D2364F0D00F7A17 /* libPods-ActivityList.a */; };
+		8412538D1F4AC28D0065C6E7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8412538F1F4AC28D0065C6E7 /* Localizable.strings */; };
 		8420D8E11F25D1C400FD524A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8420D8E01F25D1C400FD524A /* AppDelegate.m */; };
 		8420D8E71F25D1C500FD524A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8420D8E51F25D1C500FD524A /* Main.storyboard */; };
 		8420D8EC1F25D1C500FD524A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8420D8EB1F25D1C500FD524A /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8412538E1F4AC28D0065C6E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8420D8D91F25D1C400FD524A /* ActivityList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivityList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8420D8DF1F25D1C400FD524A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8420D8E01F25D1C400FD524A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				8420D8F01F25D1C500FD524A /* Info.plist */,
 				8431D7481F47EB2500A67B4F /* Cities.plist */,
 				8420D91F1F25DF7200FD524A /* PrefixHeader.pch */,
+				8412538F1F4AC28D0065C6E7 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				8431D7551F48035000A67B4F /* Issue.storyboard in Resources */,
 				8431D7521F48032E00A67B4F /* Member.storyboard in Resources */,
 				8431D7491F47EB2500A67B4F /* Cities.plist in Resources */,
+				8412538D1F4AC28D0065C6E7 /* Localizable.strings in Resources */,
 				8420D8E71F25D1C500FD524A /* Main.storyboard in Resources */,
 				84318E7A1F272F1600ACD2A9 /* Detail.storyboard in Resources */,
 			);
@@ -736,6 +740,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8412538F1F4AC28D0065C6E7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8412538E1F4AC28D0065C6E7 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8420D8E51F25D1C500FD524A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
