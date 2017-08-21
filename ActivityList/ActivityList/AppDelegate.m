@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <ECSlidingViewController/ECSlidingViewController.h>//一个门框结构
-@interface AppDelegate ()
+@interface AppDelegate () 
 @property (strong,nonatomic) ECSlidingViewController *slideingVC;
 @end
 
@@ -25,17 +25,37 @@
     UINavigationController *navi = [Utilities getStoryboardInstance:@"Main" byIdentity:@"HomeNavi"];
     //创建门框(初始化的同时顺便设置好门框最外层的那扇门，也就是用户首先会看到的正中间的页面)
     _slideingVC= [[ECSlidingViewController alloc]initWithTopViewController:navi];
+    //签协议
+    //_slideingVC.delegate = self;
     //放好左边那扇门
     _slideingVC.underLeftViewController = [Utilities getStoryboardInstance:@"Member" byIdentity:@"Left"];
     //设置手势(表示让中间的门能够对拖拽与触摸响应)
     _slideingVC.topViewAnchoredGesture = ECSlidingViewControllerAnchoredGestureTapping | ECSlidingViewControllerAnchoredGesturePanning ;
     //把上述手势添加到中间那扇门          //获取手势的实例
     [navi.view addGestureRecognizer: _slideingVC.panGesture];
+    //设置侧滑动画的执行时间
+    _slideingVC.defaultTransitionDuration = 0.25;
+    //设置滑动的幅度（中间那扇门打开的宽度）
+    _slideingVC.anchorRightPeekAmount = UI_SCREEN_W/6;
     //设置App入口
     _window.rootViewController = _slideingVC;
+    //注册侧滑按钮被按的监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leftSwitchAction:) name:@"LeftSwitch" object:nil];
+   // NSNotification *remove= [NSNotification notificationWithName:@"touched" object:nil];
     return YES;
 }
-
+-(void)leftSwitchAction:(NSNotification *)note{
+   // NSLog(@"侧滑");
+    //当合上的状态下打开，当打开的状态下合上
+    if (_slideingVC.currentTopViewPosition == ECSlidingViewControllerTopViewPositionCentered) {
+        //当合上的状态下打开
+        [_slideingVC anchorTopViewToRightAnimated:YES];
+        
+    }else{
+        //打开的状态下合上
+        [_slideingVC resetTopViewAnimated:YES];
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
