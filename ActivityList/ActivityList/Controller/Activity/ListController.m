@@ -237,7 +237,7 @@
         //开始请求
         [RequestAPI requestURL:request withParameters:parameter andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
             //成功以后要做的事情，在此处执行
-            NSLog(@"responseObject = %@",responseObject);
+            //NSLog(@"responseObject = %@",responseObject);
             //停止动画
             [self endAnimation];
             if ([responseObject[@"resultFlag"] integerValue] == 8001) {

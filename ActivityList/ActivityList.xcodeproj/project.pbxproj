@@ -52,6 +52,7 @@
 		843629901F2EF7EF00793502 /* StorageMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 843629861F2EF7EF00793502 /* StorageMgr.m */; };
 		843629941F2EFBC900793502 /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843629931F2EFBC900793502 /* Openssl.framework */; };
 		843629981F2EFC9700793502 /* BasicEncodingRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 843629971F2EFC9700793502 /* BasicEncodingRules.m */; };
+		8465237F1F4D514E0060BFE6 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8465237E1F4D514E0060BFE6 /* UserModel.m */; };
 		84694AF61F3338950073A2DA /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 84694AF51F3338950073A2DA /* Utilities.m */; };
 		84F24B861F28615400C9BA47 /* ActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F24B851F28615400C9BA47 /* ActivityModel.m */; };
 		84F7276D1F48251D00E7E773 /* CityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F7276C1F48251D00E7E773 /* CityTableViewController.m */; };
@@ -160,6 +161,8 @@
 		843629931F2EFBC900793502 /* Openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Openssl.framework; sourceTree = "<group>"; };
 		843629961F2EFC9700793502 /* BasicEncodingRules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicEncodingRules.h; sourceTree = "<group>"; };
 		843629971F2EFC9700793502 /* BasicEncodingRules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicEncodingRules.m; sourceTree = "<group>"; };
+		8465237D1F4D514E0060BFE6 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		8465237E1F4D514E0060BFE6 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		84694AF41F3338950073A2DA /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		84694AF51F3338950073A2DA /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		84F24B841F28615400C9BA47 /* ActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModel.h; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 				8420D9181F25D8CD00FD524A /* ActivityList.xcdatamodeld */,
 				84F24B841F28615400C9BA47 /* ActivityModel.h */,
 				84F24B851F28615400C9BA47 /* ActivityModel.m */,
+				8465237D1F4D514E0060BFE6 /* UserModel.h */,
+				8465237E1F4D514E0060BFE6 /* UserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,12 +342,12 @@
 				843629781F2EF7EF00793502 /* AppAPIClient.m */,
 				843629791F2EF7EF00793502 /* ErrorHandler.h */,
 				8436297A1F2EF7EF00793502 /* ErrorHandler.m */,
-				8436297B1F2EF7EF00793502 /* NSData+Base64.h */,
-				8436297C1F2EF7EF00793502 /* NSData+Base64.m */,
 				8436297D1F2EF7EF00793502 /* NSDate+Utility.h */,
 				8436297E1F2EF7EF00793502 /* NSDate+Utility.m */,
 				8436297F1F2EF7EF00793502 /* NSDateFormatter+Category.h */,
 				843629801F2EF7EF00793502 /* NSDateFormatter+Category.m */,
+				8436297B1F2EF7EF00793502 /* NSData+Base64.h */,
+				8436297C1F2EF7EF00793502 /* NSData+Base64.m */,
 				843629811F2EF7EF00793502 /* NSString+Crypt.h */,
 				843629821F2EF7EF00793502 /* NSString+Crypt.m */,
 				843629851F2EF7EF00793502 /* StorageMgr.h */,
@@ -695,6 +700,7 @@
 				8436298C1F2EF7EF00793502 /* NSDate+Utility.m in Sources */,
 				8431D7381F47E9BA00A67B4F /* base64.m in Sources */,
 				8420D91A1F25D8CD00FD524A /* ActivityList.xcdatamodeld in Sources */,
+				8465237F1F4D514E0060BFE6 /* UserModel.m in Sources */,
 				8431D73B1F47E9BA00A67B4F /* MD5DataSigner.m in Sources */,
 				8436298E1F2EF7EF00793502 /* NSString+Crypt.m in Sources */,
 				84F7277C1F48274800E7E773 /* SignUpViewController.m in Sources */,
