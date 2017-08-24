@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ActivityModel : NSObject
-
+@property (strong,nonatomic) NSString *activityId;
 @property (strong, nonatomic) NSString *imgUrl; //活动图片的URL字符串
 @property (strong, nonatomic) NSString *name1;   //活动名称
 @property (strong, nonatomic) NSString *content; //活动内容

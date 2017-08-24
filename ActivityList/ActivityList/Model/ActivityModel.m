@@ -24,7 +24,8 @@
         _content = [dict[@"content"] isKindOfClass:[NSNull class]] ? @"活动内容" : dict[@"content"];
         _like = [dict[@"reliableNumber"] isKindOfClass:[NSNull class]] ? 0 : [dict[@"reliableNumber"] integerValue];
         _unlike = [dict[@"unReliableNumber"] isKindOfClass:[NSNull class]] ? 0 : [dict[@"unReliableNumber"] integerValue];
-        _isFavo = [dict[@"isFavo"] isKindOfClass:[NSNull class]] ? NO : [dict[@"isFavo"] boolValue];       
+        _isFavo = [dict[@"isFavo"] isKindOfClass:[NSNull class]] ? NO : [dict[@"isFavo"] boolValue];
+        _activityId = [Utilities nullAndNilCheck:dict[@"id"] replaceBy:@"0"];
     }
     return self;
 }

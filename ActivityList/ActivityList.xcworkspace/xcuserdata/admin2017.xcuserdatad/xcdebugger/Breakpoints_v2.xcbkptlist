@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActivityList/Controller/Activity/DetailViewController.m"
+            timestampString = "525261644.352099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-networkRequest"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DetailViewController networkRequest]"
+                  moduleName = "ActivityList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin2015/Desktop/%E5%B0%8F%E7%BB%84%E9%A1%B9%E7%9B%AE/ActivityList/ActivityList/Controller/Activity/DetailViewController.m"
+                  timestampString = "525262241.884562"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "613">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[DetailViewController networkRequest]_block_invoke.74"
+                  moduleName = "ActivityList"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin2015/Desktop/%E5%B0%8F%E7%BB%84%E9%A1%B9%E7%9B%AE/ActivityList/ActivityList/Controller/Activity/DetailViewController.m"
+                  timestampString = "525262241.88712"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
