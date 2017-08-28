@@ -343,6 +343,7 @@
                         <outlet property="contentLbl" destination="dLf-Ey-9ZG" id="yfV-Ln-xO5"/>
                         <outlet property="issuerLbl" destination="pHy-8i-KIZ" id="zaB-IL-I5u"/>
                         <outlet property="phoneBtn" destination="b8C-Zo-O74" id="ckl-fY-WFR"/>
+                        <outlet property="scrollView" destination="5qR-zB-WfQ" id="qCQ-9l-gWN"/>
                         <outlet property="timeLbl" destination="Dd7-KC-P5g" id="a6p-8z-XkD"/>
                         <outlet property="typeLbl" destination="4DH-L8-1ln" id="2l0-D1-Ptv"/>
                     </connections>
@@ -354,7 +355,7 @@
         <!--Purchase Table View Controller-->
         <scene sceneID="ovg-hO-ehe">
             <objects>
-                <tableViewController id="veO-El-aUJ" customClass="PurchaseTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Purchase" useStoryboardIdentifierAsRestorationIdentifier="YES" id="veO-El-aUJ" customClass="PurchaseTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RYa-aE-aAJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
